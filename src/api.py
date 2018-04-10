@@ -18,15 +18,17 @@ transform = transforms.Compose([
 	transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
-model_path = '../models/fc_best.pt'
-cnn   = ResNet()
-fc    = FC()
-print(fc)
+model_path = '../models/resnet_best.pt'
+#cnn   = ResNet()
+#fc    = FC()
+model = ResNetCNN()
+#print(fc)
 #model = ResNetCNN()
 try:
-	l = torch.load(model_path)
-	print("l: ", l)
-	fc.load_state_dict(l)
+	#l = torch.load(model_path)
+	#print("l: ", l)
+	#fc.load_state_dict(l)
+	model.load_state_dict(torch.load(model_path))
 	print('Model Loading Done!!')
 except:
 	print("Model Loading Failed!!")
@@ -59,7 +61,9 @@ def upload_file():
 	file.save(f)
 	image  = Image.open(f).convert('RGB')
 	image  = transform(image).unsqueeze(0)
-	out    = fc(cnn(Variable(image)))
+	#out    = fc(cnn(Variable(image)))
+	out    = model(Variable(image))
+	
 	pred   = int(out.data.max(1, keepdim=True)[1].numpy()[0])
 	print("out: ", classes[pred])	
 	return render_template('index.html', init=True, pred=classes[pred])

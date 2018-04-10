@@ -14,16 +14,19 @@ def to_var(x, volatile=False):
         x = x.cuda()
     return Variable(x, volatile=volatile)
     
-def validate(cnn, fc, data_loader, criterion):
+def validate(model, data_loader, criterion):
 	val_size = len(data_loader)
 	val_loss = 0
-	cnn.eval()
-	fc.eval()
+	#cnn.eval()
+	#fc.eval()
+	model.eval()
 	for i, (images, labels) in enumerate(data_loader):
 		# Set mini-batch dataset
 		images    = to_var(images, volatile=True)
 		labels    = to_var(labels)
-		outputs   = fc(cnn(images))
+		#outputs  = fc(cnn(images))
+		outputs   = model(images)
+		
 		loss = criterion(outputs, labels)
 		val_loss += loss.data.sum()
 		
@@ -56,40 +59,45 @@ def main(args):
 	val_loader = data.DataLoader(val_ds, 
 								 batch_size = args.batch_size,
 								 shuffle = True)
-	cnn = ResNet()
-	fc  = FC()
-	 
+	#cnn = ResNet()
+	#fc  = FC()
+	model =  ResNetCNN()
 	try:
-		fc.load_state_dict(torch.load(args.model_path))
+		model.load_state_dict(torch.load(args.model_path))
 		print("using pre-trained model")
 	except:
 		print("using new model")
 	criterion = nn.CrossEntropyLoss()
 	if torch.cuda.is_available():
-		fc.cuda()
-		cnn.cuda()
+		#fc.cuda()
+		#cnn.cuda()
+		model.cuda()
 		criterion.cuda()
 	
 
-	optimizer  = torch.optim.Adam(fc.parameters(), lr=args.learning_rate)
+	optimizer  = torch.optim.Adam(model.fc.parameters(), lr=args.learning_rate)
 	total_step = len(train_loader)
 	print('validating.....')
-	best_val = validate(cnn, fc, val_loader, criterion)
+	#best_val = validate(cnn, fc, val_loader, criterion)
+	best_val = validate(model, val_loader, criterion)
+	
 	print("starting val loss {:f}".format(best_val))
 	
 	for epoch in range(args.num_epochs):
-		fc.train()
-		cnn.train()
+		#fc.train()
+		#cnn.train()
+		model.train()
 		for i, (images, labels) in enumerate(train_loader):
 
 			# Set mini-batch dataset
 			images    = to_var(images, volatile=True)
 			labels    = to_var(labels)
 			# Forward, Backward and Optimize
-			fc.zero_grad()
-			cnn.zero_grad()
-			
-			outputs = fc(cnn(images))
+			#fc.zero_grad()
+			#cnn.zero_grad()
+			model.zero_grad()
+			#outputs = fc(cnn(images))
+			outputs = model(images)
 
 			loss = criterion(outputs, labels)
 			loss.backward()
@@ -103,18 +111,24 @@ def main(args):
 
 			# Save the models
 		if (epoch+1) % args.save_step == 0:
-			val_loss = validate(cnn, fc, val_loader, criterion)
+			#val_loss = validate(cnn, fc, val_loader, criterion)
+			val_loss = validate(model, val_loader, criterion)
+			
 			print('val loss: ', val_loss)
 			
 			if val_loss < best_val:
 				best_val = val_loss
-				fc_cpu   = fc.cpu()
+#				fc_cpu   = fc.cpu()
+				model_cpu = model.cpu()
 				print("Found new best val")
-				torch.save(fc_cpu.state_dict(), 
+#				torch.save(fc_cpu.state_dict(), 
+#					   args.model_path)
+				torch.save(model_cpu.state_dict(), 
 					   args.model_path)
+					   
 				if torch.cuda.is_available():
-					fc.cuda()	   
-
+					#fc.cuda()	   
+					model.cuda()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', type=str, default='../data/train/' ,
@@ -123,7 +137,7 @@ if __name__ == '__main__':
                         help='step size for prining log info')
     parser.add_argument('--save_step', type=int , default=1,
                         help='step size for saving trained models')
-    parser.add_argument('--model_path', type=str, default='../models/fc_best.pt',
+    parser.add_argument('--model_path', type=str, default='../models/resnet_best.pt',
                         help='path for trained encoder')
 
     parser.add_argument('--hidden_size', type=int , default=512 ,
