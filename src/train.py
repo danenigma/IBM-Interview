@@ -112,6 +112,8 @@ def main(args):
 				print("Found new best val")
 				torch.save(fc_cpu.state_dict(), 
 					   args.model_path)
+				if torch.cuda.is_available():
+					fc.cuda()	   
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
