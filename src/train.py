@@ -51,7 +51,7 @@ def main(args):
 								 shuffle = True)
 								 
 	val_ds     = IBMDataset(args.data_dir, transform=test_trans, name='val')
-	print(len(val_ds))
+	print(len(val_ds), len(train_ds))
 	val_loader = data.DataLoader(val_ds, 
 								 batch_size = args.batch_size,
 								 shuffle = True)
@@ -62,11 +62,11 @@ def main(args):
 		print("using pre-trained model")
 	except:
 		print("using new model")
-
+	criterion = nn.CrossEntropyLoss()
 	if torch.cuda.is_available():
 		model.cuda()
-		
-	criterion = nn.CrossEntropyLoss()
+		criterion.cuda()
+	
 
 	optimizer  = torch.optim.Adam(model.fc.parameters(), lr=args.learning_rate)
 	total_step = len(train_loader)
@@ -76,7 +76,7 @@ def main(args):
 	
 	for epoch in range(args.num_epochs):
 		model.train()
-		for i, (images, labels) in enumerate(val_loader):
+		for i, (images, labels) in enumerate(train_loader):
 
 			# Set mini-batch dataset
 			images    = to_var(images, volatile=True)
