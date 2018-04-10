@@ -26,7 +26,7 @@ for index, label in enumerate(classes):
         
 df = pd.DataFrame(train, columns=['file', 'category', 'category_id',]) 
 
-train_table = df.sample(frac=0.99) #70-30 split
+train_table = df.sample(frac=0.80) #70-30 split
 val_table   = df[~df['file'].isin(train_table['file'])]
 
 train_table.to_pickle(train_table_name) 
