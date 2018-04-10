@@ -108,8 +108,9 @@ def main(args):
 			
 			if val_loss < best_val:
 				best_val = val_loss
+				fc_cpu   = fc.cpu()
 				print("Found new best val")
-				torch.save(fc.cpu().state_dict(), 
+				torch.save(fc_cpu.state_dict(), 
 					   args.model_path)
 
 if __name__ == '__main__':
