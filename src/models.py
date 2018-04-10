@@ -51,12 +51,30 @@ class ResNet(nn.Module):
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
         self.resnet  = nn.Sequential(*modules)
         
-        
+        print('cnn feat: ', resnet.fc.in_features)
     def forward(self, images):
         """Extract the image feature vectors."""
         features = self.resnet(images)
         features = Variable(features.data)
         features = features.view(features.size(0), -1)
+        return features
+        
+class FC(nn.Module):
+
+    def __init__(self):
+        super(FC, self).__init__()
+        self.fc      = nn.ModuleList([
+        			   nn.Linear(2048, 1024),
+        			   nn.ReLU(),
+        			   nn.Linear(1024, 1024),
+        			   nn.ReLU(),
+        			   nn.Linear(1024, 12)])
+    
+        
+    def forward(self, features):
+        """Extract the image feature vectors."""
+        for layer in self.fc:
+        	features = layer(features)
         return features
 
 if __name__=='__main__':
