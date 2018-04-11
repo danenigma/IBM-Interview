@@ -15,27 +15,26 @@ def to_var(x, volatile=False):
     return Variable(x, volatile=volatile)
     
 def validate(model, data_loader, criterion):
-    val_size = len(data_loader)
-    val_loss = 0
-    #cnn.eval()
-    #fc.eval()
-    model.eval()
-    correct = 0
-    for i, (images, labels) in enumerate(data_loader):
-        # Set mini-batch dataset
-        images    = to_var(images, volatile=True)
-        labels    = to_var(labels)
-        #outputs  = fc(cnn(images))
-        outputs   = model(images)
-        pred = outputs.data.max(1, keepdim=True)[1].int()
-        predicted = pred.eq(labels.data.view_as(pred).int())
-        correct += predicted.sum()
+	val_size = len(data_loader)
+	val_loss = 0
+	#cnn.eval()
+	#fc.eval()
+	model.eval()
+	correct = 0
+	for i, (images, labels) in enumerate(data_loader):
+		# Set mini-batch dataset
+		images    = to_var(images, volatile=True)
+		labels    = to_var(labels)
+		#outputs  = fc(cnn(images))
+		outputs   = model(images)
+		pred = outputs.data.max(1, keepdim=True)[1].int()
+		predicted = pred.eq(labels.data.view_as(pred).int())
+		correct += predicted.sum()
+		loss = criterion(outputs, labels)
+		val_loss += loss.data.sum()
+	print('val acc: ', correct/950)
+	return val_loss/val_size
 
-        loss = criterion(outputs, labels)
-        val_loss += loss.data.sum()
-    print('val acc: ', correct/950)
-    return val_loss/val_size
-    
 def main(args):
 
 	img_size = 224
