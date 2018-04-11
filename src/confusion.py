@@ -80,6 +80,12 @@ def plot_confusion_matrix(cm,
     plt.show()
 if __name__=='__main__':
 	result = np.load("pred.npy")
+	resnet152 = np.load("resnet152_pred.npy")
+	train_log = np.load("../logs/train_log.npy")
+	val_log   = np.load("../logs/val_log.npy")
+	print(train_log)
+	print(val_log)
+	print(resnet152)
 	names = [
 		 'Black-grass', 
 		 'Charlock', 
@@ -95,7 +101,7 @@ if __name__=='__main__':
 		 'Sugar-beet'
 		 ]
 	print(result.shape)
-	cm = confusion_matrix(result[:,0], result[:,1])
+	cm = confusion_matrix(resnet152[:,0], resnet152[:,1])
 	plot_confusion_matrix(cm,
 		                  names,
 		                  title='Confusion matrix',
