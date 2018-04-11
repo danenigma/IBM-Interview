@@ -8,6 +8,7 @@ uploads/
 *.so
 *.zip
 *.pt
+*.csv
 data/test/
 data/train/
 # Distribution / packaging
