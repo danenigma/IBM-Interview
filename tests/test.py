@@ -74,19 +74,19 @@ if __name__=='__main__':
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
-    test_ds     = IBMDataset('../data/test/', transform=test_trans, name='test')
+    test_ds     = IBMDataset('data/test/', transform=test_trans, name='test')
     test_table  = test_ds.table
     test_loader = data.DataLoader(test_ds, 
                              batch_size = 1,
                              shuffle = False)
-    val_ds     = IBMDataset('../data/train/', transform=test_trans, name='val')
+    val_ds     = IBMDataset('data/train/', transform=test_trans, name='val')
     val_table  = val_ds.table
     val_loader = data.DataLoader(val_ds, 
                              batch_size = 1,
                              shuffle = False)
 
     model =  ResNet50()
-    model.load_state_dict(torch.load('../models/resnet50_best.pt'))    
+    model.load_state_dict(torch.load('models/resnet50_best.pt'))    
     if torch.cuda.is_available():
         model.cuda()
     #test(model, test_loader, test_table)

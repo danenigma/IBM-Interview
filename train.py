@@ -121,8 +121,8 @@ def main(args):
             val_log.append(val_loss)
             train_log.append(loss.data[0])
             print('val loss: ', val_loss)
-            np.save("../logs/val_log.npy", np.array(val_log))
-            np.save("../logs/train_log.npy", np.array(train_log))
+            np.save("logs/val_log.npy", np.array(val_log))
+            np.save("logs/train_log.npy", np.array(train_log))
 
             if val_loss < best_val:
                 best_val = val_loss
@@ -139,13 +139,13 @@ def main(args):
                     model.cuda()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='../data/train/' ,
+    parser.add_argument('--data_dir', type=str, default='data/train/' ,
                         help='directory for resized images')
     parser.add_argument('--log_step', type=int , default=30,
                         help='step size for prining log info')
     parser.add_argument('--save_step', type=int , default=1,
                         help='step size for saving trained models')
-    parser.add_argument('--model_path', type=str, default='../models/resnet50_best.pt',
+    parser.add_argument('--model_path', type=str, default='models/resnet50_best.pt',
                         help='path for trained encoder')
     parser.add_argument('--hidden_size', type=int , default=512 ,
                         help='dimension of lstm hidden states')
