@@ -41,7 +41,28 @@ class ResNetCNN(nn.Module):
         for layer in self.fc:
         	features = layer(features)
         return features
+class ResNet50(nn.Module):
 
+    def __init__(self):
+        """Load the pretrained ResNet-152 and replace top fc layer."""
+        super(ResNet50, self).__init__()
+        resnet  = models.resnet50(pretrained=True)
+        modules = list(resnet.children())[:-1]      # delete the last fc layer.
+        self.resnet  = nn.Sequential(*modules)
+        self.fc      = nn.ModuleList([
+        			   nn.Linear(resnet.fc.in_features, 1024),
+        			   nn.Linear(1024, 12)])
+        
+    def forward(self, images):
+        """Extract the image feature vectors."""
+        features = self.resnet(images)
+        features = Variable(features.data)
+        features = features.view(features.size(0), -1)
+        for layer in self.fc:
+        	features = layer(features)
+        return features
+
+    
 class ResNet(nn.Module):
 
     def __init__(self):
