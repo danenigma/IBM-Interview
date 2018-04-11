@@ -80,4 +80,4 @@ def upload_file():
 		return classes[int(pred[0])]
 	return None
 if __name__ == '__main__':
-    app.run(debug=True, host="172.29.52.74")
+    app.run(debug=True)
