@@ -20,6 +20,9 @@ To view the result go to 127.0.0.1:5000/
 ```
 #### View Demo
 visit this [link](http://ec2-35-155-215-84.us-west-2.compute.amazonaws.com:5000/)
-you can use the [test images](https://github.com/danenigma/IBM-Interview/blob/master/test_images/)
+
+you can use these [test images](https://github.com/danenigma/IBM-Interview/blob/master/test_images/)
 to test the system 
+## Use Case Diagram
+![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/usecase.png)
 
