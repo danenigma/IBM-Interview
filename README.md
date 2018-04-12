@@ -11,10 +11,10 @@ The Aarhus University Signal Processing group, in collaboration with University 
 
 ## Results
 
-#### Models 
 
 #### Dataset
-The dataset comprises 12 plant species at several growth stages.
+
+The dataset (~2Gb) comprises 12 images of plant species at several growth stages.
 
 | Species Names |
 | ------------- |
@@ -32,6 +32,17 @@ The dataset comprises 12 plant species at several growth stages.
 | Sugar beet |
 
 You can obtain the original dataset [here](https://vision.eng.au.dk/plant-seedlings-dataset/)
+#### Models 
+
+I experimented with pre-trained CNN models with their final FC layers removed, Resnet50 and Resnet152, to extract useful features for classification.
+
+| Model    | Accuracy (%) | Size (Mb) |
+| -------- | -------- | ---------- |
+| Resnet50  1 layer FC| 80.1 | 102 |
+| Resnet153 3 layer FC| 84.3 | 228 |
+ 
+##### Confusion Matrix for Resnet50 with a single FC layer 
+![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_1.png)
 ### Installation
 
 Install [conda](https://conda.io/docs/user-guide/install/index.html) and install dependencies
