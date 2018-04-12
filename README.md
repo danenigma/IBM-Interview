@@ -14,6 +14,22 @@ The Aarhus University Signal Processing group, in collaboration with University 
 #### Models 
 
 #### Dataset
+The dataset comprises 12 plant species at several growth stages.
+| Species Names |
+| ------ |
+| Black-grass |
+| Charlock |
+| Cleavers |
+| Common Chickweed |
+| Common wheat |
+| Fat Hen | 
+| Loose Silky-bent |
+| Maize |
+| Scentless Mayweed |
+| Shepherds Purse |
+| Small-flowered Cranesbill |
+| Sugar beet |
+
 You can obtain the original dataset [here](https://vision.eng.au.dk/plant-seedlings-dataset/)
 ### Installation
 
