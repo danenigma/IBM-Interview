@@ -17,7 +17,7 @@ The Aarhus University Signal Processing group, in collaboration with University 
 The dataset comprises 12 plant species at several growth stages.
 
 | Species Names |
-| ------ |
+| ------------- |
 | Black-grass |
 | Charlock |
 | Cleavers |
