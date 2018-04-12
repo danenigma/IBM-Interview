@@ -12,6 +12,11 @@ $ cd ~/IBM-Interview/
 $ conda install --yes --file requirements.txt
 ```
 ## Usage
+#### Training Model
+```sh
+$ cd ~/IBM-Interview/
+$ python train.py --data_dir data --num_epochs 10 --batch_size 32 --learning_rate 0.001 
+```
 #### Running Locally
 ```sh
 $ cd ~/IBM-Interview/
