@@ -38,3 +38,26 @@ to test the system
 ## Use Case Diagram
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/usecase.png)
 
+
+### References
+
+	@article{DBLP:journals/corr/abs-1711-05458,
+	  author    = {Thomas Mosgaard Giselsson and
+		           Rasmus Nyholm J{\o}rgensen and
+		           Peter Kryger Jensen and
+		           Mads Dyrmann and
+		           Henrik Skov Midtiby},
+	  title     = {A Public Image Database for Benchmark of Plant Seedling Classification
+		           Algorithms},
+	  journal   = {CoRR},
+	  volume    = {abs/1711.05458},
+	  year      = {2017},
+	  url       = {http://arxiv.org/abs/1711.05458},
+	  archivePrefix = {arXiv},
+	  eprint    = {1711.05458},
+	  timestamp = {Fri, 01 Dec 2017 14:22:24 +0100},
+	  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1711-05458},
+	  bibsource = {dblp computer science bibliography, https://dblp.org}
+	}
+
+
