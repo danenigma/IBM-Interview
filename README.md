@@ -1,4 +1,4 @@
-# IBM-Interview
+# Seedling Species Identification
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/web.png)
 
 ### Installation
