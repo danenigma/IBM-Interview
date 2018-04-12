@@ -3,7 +3,7 @@
 
 ## Description
 
-The aim of this project is to identify different species of plant seedlings and there by discriminate weed seedlings from crop ones.The ability to do so could in effect mean better crop yields and better conservation of the environment.
+The aim of this project is to identify different species of plant seedlings and thereby discriminate weed seedlings from crop ones.The ability to do so could in effect mean better crop yields and better conservation of the environment.
 
 
 ## Results
@@ -82,7 +82,7 @@ $ python app.py
 To view the result go to 127.0.0.1:5000/
 ```
 #### View Demo
-visit this [link](http://ec2-35-155-215-84.us-west-2.compute.amazonaws.com:5000/)
+visit [link](http://ec2-35-155-215-84.us-west-2.compute.amazonaws.com:5000/)
 
 you can use these [test images](https://github.com/danenigma/IBM-Interview/blob/master/test_images/)
 to test the system 
