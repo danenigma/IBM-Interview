@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import itertools
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_recall_fscore_support
 
 def plot_confusion_matrix(cm,
                           target_names,
@@ -81,7 +82,14 @@ def plot_confusion_matrix(cm,
 if __name__=='__main__':
 	#	result = np.load("pred.npy")
 	resnet152 = np.load("resnet152_pred.npy")
-	print(sum(resnet152[:,0]==resnet152[:,1])/950)
+	resnet50  = np.load("pred.npy")
+	
+	print('resnet152 acc: ', 100*sum(resnet152[:,0]==resnet152[:,1])/950)
+	print('resnet50  acc: ', 100*sum(resnet50[:,0]==resnet50[:,1])/950)
+	
+	print('resnet152: ', precision_recall_fscore_support(resnet152[:,1], resnet152[:,0], average='macro'))
+	print('resnet50: ', precision_recall_fscore_support(resnet50[:,1], resnet50[:,0], average='macro'))
+	
 	#	train_log = np.load("logs/train_log.npy")
 	#	val_log   = np.load("logs/val_log.npy")
 	#	print(train_log)

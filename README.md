@@ -39,10 +39,10 @@ I experimented with pre-trained CNN models with their final FC layers removed, R
 After 20 epochs of training on a 80-20 spit of the dataset, 80% training 20% validation, I got the following result.
 
 
-| Model    | Accuracy (%) | Size (Mb) |
-| -------- | -------- | ---------- |
-| Resnet50  single layer FC| 80.1 | 102 |
-| Resnet153 three layer FC| 86.8 | 228 |
+| Model    | Accuracy (%) | Size (Mb) | Precision | Recall |
+| -------- | ------------ | --------- | --------- | ------ |
+| Resnet50  single layer FC | 84.42 | 102 | 0.854 | 0.825 |
+| Resnet153 three layer FC | 86.84 | 228 | 0.867 | 0.849 |
  
 ##### Confusion Matrix for Resnet50 with a single FC layer 
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_1.png)
