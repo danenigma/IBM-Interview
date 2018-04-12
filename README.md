@@ -36,7 +36,7 @@ You can obtain the original dataset [here](https://vision.eng.au.dk/plant-seedli
 
 I experimented with pre-trained CNN models with their final FC layers removed, Resnet50 and Resnet152, to extract useful features for classification.
 
-After 20 epochs of training on a 80-20 spit of the dataset, 80% training 20% validation, I got the following result.
+After 20 epochs of training on a 80-20 spit of the dataset(~4750 images), 80% training 20% validation, I got the following result.
 
 
 | Model    | Accuracy (%) | Size (Mb) | Precision | Recall |

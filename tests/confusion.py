@@ -108,6 +108,7 @@ if __name__=='__main__':
 	 'Fat-Hen', 
 	 'Cleavers', 
 	 'Purse']
+	
 	'''
 	names = [
 		 'Black-grass', 
@@ -123,13 +124,15 @@ if __name__=='__main__':
 		 'Cranesbill', 
 		 'Sugar-beet'
 		 ]
-	print(result.shape)
 	'''
-	cm = confusion_matrix(resnet152[:,0], resnet152[:,1])
+	#print(result.shape)
+	
+	cm = confusion_matrix(resnet152[:,1], resnet152[:,0])
+	print(cm)
 	plot_confusion_matrix(cm,
 		                  names,
 		                  title='Confusion matrix',
 		                  cmap=None,
-		                  normalize=True)	
+		                  normalize=False)	
 
 	
