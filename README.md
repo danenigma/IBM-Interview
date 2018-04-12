@@ -50,9 +50,10 @@ After 20 epochs of training on a 80-20 spit of the dataset(~4750 images), 80% tr
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_2.png)
 
 ## Web App
-
-
-
+For the Web Application, I used a lightweight python web framework called Flask.
+The flask server accepts an image POST request, transforms the image into a suitable format
+and returns a response containing the classification result. The model utilized for this task
+is the Resnet50 with single layer FC model, because of the fact that it is less than half the size of Resnet152 with comparable accuracy.
 
 #### Use Case Diagram
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/usecase.png)

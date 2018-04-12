@@ -1,3 +1,5 @@
+__author__ = 'Daniel Marew'
+
 import torch
 import torch.nn as nn
 import torchvision.models as models
@@ -21,17 +23,6 @@ class ResNetCNN(nn.Module):
         			   nn.ReLU(),
         			   nn.Linear(1024, 12)])
         
-        #self.init_weights()
-        
-    def init_weights(self):
-        """Initialize the weights."""
-        
-        self.linear1.weight.data.normal_(0.0, 0.02)
-        self.linear1.bias.data.fill_(0)
-
-        self.linear2.weight.data.normal_(0.0, 0.02)
-        self.linear2.bias.data.fill_(0)
-
         
     def forward(self, images):
         """Extract the image feature vectors."""
@@ -44,7 +35,7 @@ class ResNetCNN(nn.Module):
 class ResNet50(nn.Module):
 
     def __init__(self):
-        """Load the pretrained ResNet-152 and replace top fc layer."""
+        """Load the pretrained ResNet-50 and replace top fc layer."""
         super(ResNet50, self).__init__()
         resnet  = models.resnet50(pretrained=False)
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
@@ -93,7 +84,7 @@ class FC(nn.Module):
     
         
     def forward(self, features):
-        """Extract the image feature vectors."""
+        """FC layers"""
         for layer in self.fc:
         	features = layer(features)
         return features

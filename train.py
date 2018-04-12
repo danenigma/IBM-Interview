@@ -1,3 +1,4 @@
+__author__ = 'Daniel Marew'
 import argparse
 import torch
 import torch.nn as nn
@@ -17,8 +18,6 @@ def to_var(x, volatile=False):
 def validate(model, data_loader, criterion):
 	val_size = len(data_loader)
 	val_loss = 0
-	#cnn.eval()
-	#fc.eval()
 	model.eval()
 	correct = 0
 	for i, (images, labels) in enumerate(data_loader):
@@ -62,8 +61,7 @@ def main(args):
     val_loader = data.DataLoader(val_ds, 
                                  batch_size = args.batch_size,
                                  shuffle = True)
-    #cnn = ResNet()
-    #fc  = FC()
+
     model =  ResNet50()
     try:
         model.load_state_dict(torch.load(args.model_path))
@@ -71,9 +69,8 @@ def main(args):
     except:
         print("using new model")
     criterion = nn.CrossEntropyLoss()
+
     if torch.cuda.is_available():
-        #fc.cuda()
-        #cnn.cuda()
         model.cuda()
         criterion.cuda()
 
@@ -97,9 +94,7 @@ def main(args):
             # Set mini-batch dataset
             images    = to_var(images, volatile=True)
             labels    = to_var(labels)
-            # Forward, Backward and Optimize
-            #fc.zero_grad()
-            #cnn.zero_grad()
+
             optimizer.zero_grad()
             #outputs = fc(cnn(images))
             outputs = model(images)
