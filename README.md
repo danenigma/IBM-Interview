@@ -36,13 +36,19 @@ You can obtain the original dataset [here](https://vision.eng.au.dk/plant-seedli
 
 I experimented with pre-trained CNN models with their final FC layers removed, Resnet50 and Resnet152, to extract useful features for classification.
 
+After 20 epochs of training on a 80-20 spit of the dataset, 80% training 20% validation, I got the following result.
+
+
 | Model    | Accuracy (%) | Size (Mb) |
 | -------- | -------- | ---------- |
-| Resnet50  1 layer FC| 80.1 | 102 |
-| Resnet153 3 layer FC| 84.3 | 228 |
+| Resnet50  single layer FC| 80.1 | 102 |
+| Resnet153 three layer FC| 86.8 | 228 |
  
 ##### Confusion Matrix for Resnet50 with a single FC layer 
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_1.png)
+##### Confusion Matrix for Resnet152 with three FC layer 
+![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_2.png)
+
 ### Installation
 
 Install [conda](https://conda.io/docs/user-guide/install/index.html) and install dependencies

@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-data_dir = '../data/'
+data_dir = 'data/'
 
 train_table_name  = data_dir + 'train/train_table.pickle'
 val_table_name    = data_dir + 'train/val_table.pickle'
@@ -17,8 +17,8 @@ except:
 
 classes = os.listdir(data_dir + 'train/')
 print(classes)
-classes = sorted(classes, key=lambda item: (int(item.partition(' ')[0])
-                               if item[0].isdigit() else float('inf'), item))
+#classes = sorted(classes, key=lambda item: (int(item.partition(' ')[0])
+#                               if item[0].isdigit() else float('inf'), item))
 
 num_to_class = dict(zip(range(len(classes)), classes))
 print(num_to_class)	
@@ -38,5 +38,5 @@ sample_submission = pd.read_csv(data_dir + 'sample_submission.csv')
 sample_submission.columns = ['file', 'category']
 
 sample_submission['category_id'] = 0
-sample_submission.to_pickle('../data/test/test_table.pickle')
+sample_submission.to_pickle('data/test/test_table.pickle')
 print("done!")

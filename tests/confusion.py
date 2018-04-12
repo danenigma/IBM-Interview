@@ -79,13 +79,28 @@ def plot_confusion_matrix(cm,
     plt.xlabel('Predicted label\naccuracy={:0.4f}; misclass={:0.4f}'.format(accuracy, misclass))
     plt.show()
 if __name__=='__main__':
-	result = np.load("pred.npy")
+	#	result = np.load("pred.npy")
 	resnet152 = np.load("resnet152_pred.npy")
-	train_log = np.load("logs/train_log.npy")
-	val_log   = np.load("logs/val_log.npy")
-	print(train_log)
-	print(val_log)
-	print(resnet152)
+	print(sum(resnet152[:,0]==resnet152[:,1])/950)
+	#	train_log = np.load("logs/train_log.npy")
+	#	val_log   = np.load("logs/val_log.npy")
+	#	print(train_log)
+	#	print(val_log)
+	#	print(resnet152)
+	names = [
+	 'wheat',
+	 'Sugar-beet',
+	 'Scentless', 
+	 'Black-grass', 
+	 'Cranesbill', 
+	 'Maize', 
+	 'Charlock', 
+	 'Chickweed', 
+	 'Silky-bent', 
+	 'Fat-Hen', 
+	 'Cleavers', 
+	 'Purse']
+	'''
 	names = [
 		 'Black-grass', 
 		 'Charlock', 
@@ -101,6 +116,7 @@ if __name__=='__main__':
 		 'Sugar-beet'
 		 ]
 	print(result.shape)
+	'''
 	cm = confusion_matrix(resnet152[:,0], resnet152[:,1])
 	plot_confusion_matrix(cm,
 		                  names,
@@ -108,4 +124,4 @@ if __name__=='__main__':
 		                  cmap=None,
 		                  normalize=True)	
 
-
+	
