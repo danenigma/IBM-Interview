@@ -71,6 +71,7 @@ $ conda install --yes --file requirements.txt
 ## Usage
 #### Training Model
 ```sh
+$ Download data and put it in the data folder under a folder named train (one folder per each species)
 $ cd ~/IBM-Interview/
 $ python train.py --data_dir data --num_epochs 10 --batch_size 32 --learning_rate 0.001 
 ```
@@ -87,7 +88,7 @@ you can use these [test images](https://github.com/danenigma/IBM-Interview/blob/
 to test the system 
 
 ### Future works
- - Develope an Android app that uses the sampe api
+ - Develope an Android app that uses the sampe API
  - Improve the accuracy of the model using techniques like Data Augmentation.
 
 ## References
