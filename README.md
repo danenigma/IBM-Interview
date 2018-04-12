@@ -2,17 +2,17 @@
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/web.png)
 
 ## Description
-Can you differentiate a weed from a crop seedling?
 
-The ability to do so effectively can mean better crop yields and better stewardship of the environment.
+The aim of this project is to identify different species of plant seedlings and there by discriminate weed seedlings from crop ones.The ability to do so could in effect mean better crop yields and better conservation of the environment.
 
-The Aarhus University Signal Processing group, in collaboration with University of Southern Denmark, has recently released a dataset containing images of approximately 960 unique plants belonging to 12 species at several growth stages.
-![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/seedlings.png)
 
 ## Results
 
 
 #### Dataset
+
+The Aarhus University Signal Processing group, in collaboration with University of Southern Denmark, has recently released a dataset containing images of approximately 960 unique plants belonging to 12 species at several growth stages.
+![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/seedlings.png)
 
 The dataset (~2Gb) comprises 12 images of plant species at several growth stages.
 
@@ -36,7 +36,7 @@ You can obtain the original dataset [here](https://vision.eng.au.dk/plant-seedli
 
 I experimented with pre-trained CNN models with their final FC layers removed, [Resnet50 and Resnet152](https://arxiv.org/abs/1512.03385), to extract useful features for classification.
 
-After 20 epochs of training on a 80-20 spit of the dataset(~4750 images), 80% training 20% validation, I got the following result.
+After 20 epochs of training on a 80-20 spit of the dataset(~4750 images), 80% training 20% validation, I got the following results.
 
 
 | Model    | Accuracy (%) | Size (Mb) | Precision | Recall |
