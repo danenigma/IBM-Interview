@@ -86,7 +86,9 @@ visit this [link](http://ec2-35-155-215-84.us-west-2.compute.amazonaws.com:5000/
 you can use these [test images](https://github.com/danenigma/IBM-Interview/blob/master/test_images/)
 to test the system 
 
-
+### Future works
+ - Develope an Android app that uses the sampe api
+ - Improve the accuracy of the model using techniques like Data Augmentation.
 
 ## References
 
