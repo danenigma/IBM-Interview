@@ -44,9 +44,9 @@ After 20 epochs of training on a 80-20 spit of the dataset(~4750 images), 80% tr
 | Resnet50  single layer FC | 84.42 | 102 | 0.854 | 0.825 |
 | Resnet152 three layer FC | 86.84 | 228 | 0.867 | 0.849 |
  
-##### Confusion Matrix for Resnet50 with a single FC layer 
+##### Confusion Matrix for Resnet50 with a single FC layer ( on 950 images )
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_1.png)
-##### Confusion Matrix for Resnet152 with three FC layer 
+##### Confusion Matrix for Resnet152 with three FC layer ( on 950 images )
 ![alt tag](https://github.com/danenigma/IBM-Interview/blob/master/Figure_2.png)
 
 ## Web App
